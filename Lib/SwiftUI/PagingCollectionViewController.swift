@@ -32,6 +32,11 @@ public class PagingCollectionViewController<ValueType: Identifiable, PageContent
         super.viewDidLoad()
         view.backgroundColor = .clear
         setupCollectionView()
+        
+        // Hide the navigation bar on the this view controller
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     public override func viewWillAppear(_ animated: Bool) {
