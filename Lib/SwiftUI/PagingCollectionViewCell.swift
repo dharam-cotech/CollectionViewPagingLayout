@@ -25,6 +25,9 @@ class PagingCollectionViewCell<ValueType: Identifiable, Content: View>: UICollec
             updateView()
         } else {
             let viewController = UIHostingController(rootView: updateView()!)
+            viewController.navigationController?.setNavigationBarHidden(true, animated: false)
+            viewController.navigationController?.navigationBar.isHidden = true
+            viewController.navigationController?.isNavigationBarHidden = true
             hostingController = viewController
             viewController.view.backgroundColor = .clear
 
