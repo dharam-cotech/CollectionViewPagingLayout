@@ -39,6 +39,8 @@ public class PagingCollectionViewController<ValueType: Identifiable, PageContent
 
         // Hide the navigation bar on the this view controller
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.isNavigationBarHidden = true
     }
 
     // MARK: Public functions
