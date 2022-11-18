@@ -12,9 +12,9 @@ class NoNavBarHostingController <Content>: UIHostingController<AnyView> where Co
   }
 }
 
-public extension View {
+fileprivate extension View {
     func eraseToAnyView() -> AnyView {
-        AnyView(self)
+        return AnyView(self)
     }
 }
 
