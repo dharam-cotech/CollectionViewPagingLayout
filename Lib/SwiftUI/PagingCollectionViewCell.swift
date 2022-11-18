@@ -6,6 +6,12 @@ class NoNavBarHostingController <Content>: UIHostingController<AnyView> where Co
   public init(rootView: Content) {
       super.init(rootView: AnyView(rootView.navigationBarHidden(true)))
   }
+    
+    /// The hosting controller may in some cases want to make the navigation bar be not hidden.
+        /// Restrict the access to the outside world, by setting the navigation controller to nil when internally accessed.
+        public override var navigationController: UINavigationController? {
+            nil
+        }
 
   @objc required dynamic init?(coder aDecoder: NSCoder) {
       fatalError("init(coder:) has not been implemented")
@@ -14,7 +20,7 @@ class NoNavBarHostingController <Content>: UIHostingController<AnyView> where Co
 
 fileprivate extension View {
     func eraseToAnyView() -> AnyView {
-        return AnyView(self)
+        AnyView(self)
     }
 }
 
