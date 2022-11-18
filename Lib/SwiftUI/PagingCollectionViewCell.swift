@@ -1,12 +1,29 @@
 import SwiftUI
 import UIKit
 
+class NoNavBarHostingController <Content>: UIHostingController<AnyView> where Content: View {
+
+  public init(rootView: Content) {
+      super.init(rootView: AnyView(rootView.navigationBarHidden(true)))
+  }
+
+  @objc required dynamic init?(coder aDecoder: NSCoder) {
+      fatalError("init(coder:) has not been implemented")
+  }
+}
+
+public extension View {
+    func eraseToAnyView() -> AnyView {
+        AnyView(self)
+    }
+}
+
 class PagingCollectionViewCell<ValueType: Identifiable, Content: View>: UICollectionViewCell {
     typealias Parent = PagingCollectionViewController<ValueType, Content>
 
     // MARK: Properties
 
-    private weak var hostingController: UIHostingController<Content>?
+    private weak var hostingController: NoNavBarHostingController<Content>?
     private var viewBuilder: ((ValueType, CGFloat) -> Content)?
     private var value: ValueType!
     private var index: IndexPath!
@@ -24,7 +41,7 @@ class PagingCollectionViewCell<ValueType: Identifiable, Content: View>: UICollec
         if hostingController != nil {
             updateView()
         } else {
-            let viewController = UIHostingController(rootView: updateView()!)
+            let viewController = NoNavBarHostingController(rootView: updateView()!)
             viewController.navigationController?.setNavigationBarHidden(true, animated: false)
             viewController.navigationController?.navigationBar.isHidden = true
             viewController.navigationController?.isNavigationBarHidden = true
@@ -52,7 +69,7 @@ class PagingCollectionViewCell<ValueType: Identifiable, Content: View>: UICollec
         else { return nil }
 
         let view = viewBuilder(value, progress ?? 0)
-        hostingController?.rootView = view
+        hostingController?.rootView = view.eraseToAnyView()
         hostingController?.view.layoutIfNeeded()
         return view
     }
