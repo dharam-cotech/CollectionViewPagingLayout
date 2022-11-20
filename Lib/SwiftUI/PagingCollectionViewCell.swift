@@ -6,7 +6,7 @@ class PagingCollectionViewCell<ValueType: Identifiable, Content: View>: UICollec
 
     // MARK: Properties
 
-    private weak var hostingController: UIHostingController<Content>?
+    private weak var hostingController: PagingCellHostingViewController<Content>?
     private var viewBuilder: ((ValueType, CGFloat) -> Content)?
     private var value: ValueType!
     private var index: IndexPath!
@@ -24,7 +24,7 @@ class PagingCollectionViewCell<ValueType: Identifiable, Content: View>: UICollec
         if hostingController != nil {
             updateView()
         } else {
-            let viewController = UIHostingController(rootView: updateView()!)
+            let viewController = PagingCellHostingViewController(rootView: updateView()!)
             hostingController = viewController
             viewController.view.backgroundColor = .clear
 

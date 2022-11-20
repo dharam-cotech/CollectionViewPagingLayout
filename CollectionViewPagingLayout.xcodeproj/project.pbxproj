@@ -44,6 +44,7 @@
 		29CD47CE26235E8A00376CC8 /* ScaleTransformViewOptions+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CD47CD26235E8A00376CC8 /* ScaleTransformViewOptions+Layout.swift */; };
 		29DF4686261DF863007E0FA4 /* ViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF4684261DF863007E0FA4 /* ViewAnimator.swift */; };
 		29DF4687261DF863007E0FA4 /* CollectionViewPagingLayout.ZPositionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF4685261DF863007E0FA4 /* CollectionViewPagingLayout.ZPositionHandler.swift */; };
+		E99F6327292A9094008242AB /* PagingCellHostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99F6326292A9094008242AB /* PagingCellHostingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		29CD47CD26235E8A00376CC8 /* ScaleTransformViewOptions+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScaleTransformViewOptions+Layout.swift"; sourceTree = "<group>"; };
 		29DF4684261DF863007E0FA4 /* ViewAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewAnimator.swift; sourceTree = "<group>"; };
 		29DF4685261DF863007E0FA4 /* CollectionViewPagingLayout.ZPositionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewPagingLayout.ZPositionHandler.swift; sourceTree = "<group>"; };
+		E99F6326292A9094008242AB /* PagingCellHostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingCellHostingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 				291EC0DF2610B32500C65A34 /* PagingCollectionViewCell.swift */,
 				291EC0E02610B32500C65A34 /* TransformPageView.swift */,
 				291EC0E12610B32500C65A34 /* PagingCollectionViewController.swift */,
+				E99F6326292A9094008242AB /* PagingCellHostingViewController.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				291EC0E82610B32500C65A34 /* TransformPageView.swift in Sources */,
 				298DBC312441C98E00341D8E /* CGFloat+Interpolate.swift in Sources */,
 				29DF4686261DF863007E0FA4 /* ViewAnimator.swift in Sources */,
+				E99F6327292A9094008242AB /* PagingCellHostingViewController.swift in Sources */,
 				298DBC2C2441C98E00341D8E /* ScaleTransformView.swift in Sources */,
 				298DBC2F2441C98E00341D8E /* CGFloat+Range.swift in Sources */,
 				291EC0E72610B32500C65A34 /* PagingCollectionViewCell.swift in Sources */,
