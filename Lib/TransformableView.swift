@@ -23,7 +23,7 @@ public protocol TransformableView {
     /// is equal to your CollectionView width.
     ///
     /// - Parameter progress: the interpolated progress for the cell view
-    func transform(progress: CGFloat)
+    func transform(progress: CGFloat, isFirstItem: Bool, isLastItem: Bool)
     
     /// Optional function for providing the Z index(position) of the cell view
     /// As defined as an extension the default value of zIndex is Int(-abs(round(progress)))

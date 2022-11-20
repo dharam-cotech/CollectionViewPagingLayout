@@ -187,7 +187,11 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
             let cell = collectionView?.cellForItem(at: cellAttributes.indexPath)
             
             if let cell = cell as? TransformableView {
-                cell.transform(progress: progress)
+                let isFirstItem = currentPageIndex == 0 && currentPageIndex == index
+                || currentPageIndex == 1 && index == 0
+                let isLastItem = currentPageIndex == numberOfItems - 1 && currentPageIndex == index
+                || currentPageIndex == numberOfItems - 2 && index == numberOfItems - 1
+                cell.transform(progress: progress, isFirstItem: isFirstItem, isLastItem: isLastItem)
                 zIndex = cell.zPosition(progress: progress)
             }
             
@@ -275,7 +279,6 @@ public class CollectionViewPagingLayout: UICollectionViewLayout {
         offset = max(0, offset)
         offset = min(offset, Double(maxPossibleOffset))
         let contentOffset: CGPoint = scrollDirection == .horizontal ? CGPoint(x: offset, y: 0) : CGPoint(x: 0, y: offset)
-
         if animated {
             isAnimating = true
         }

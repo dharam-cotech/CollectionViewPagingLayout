@@ -39,6 +39,10 @@ public class PagingCollectionViewController<ValueType: Identifiable, PageContent
         self.navigationController?.isNavigationBarHidden = true
     }
     
+    public override var navigationController: UINavigationController? {
+        nil
+    }
+    
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 

@@ -21,7 +21,7 @@ public protocol ScaleTransformView: TransformableView {
     var scaleBlurViewHost: UIView { get }
     
     /// the main function for applying transforms
-    func applyScaleTransform(progress: CGFloat)
+    func applyScaleTransform(progress: CGFloat, isFirstItem: Bool, isLastItem: Bool)
 }
 
 
@@ -55,16 +55,16 @@ public extension ScaleTransformView {
     
     // MARK: TransformableView
     
-    func transform(progress: CGFloat) {
-        applyScaleTransform(progress: progress)
+    func transform(progress: CGFloat, isFirstItem: Bool, isLastItem: Bool) {
+        applyScaleTransform(progress: progress, isFirstItem: isFirstItem, isLastItem: isLastItem)
     }
     
     
     // MARK: Public functions
     
-    func applyScaleTransform(progress: CGFloat) {
+    func applyScaleTransform(progress: CGFloat, isFirstItem: Bool, isLastItem: Bool) {
         applyStyle(progress: progress)
-        applyScaleAndTranslation(progress: progress)
+        applyScaleAndTranslation(progress: progress, isFirstItem: isFirstItem, isLastItem: isLastItem)
         applyCATransform3D(progress: progress)
         
         if #available(iOS 10, *) {
@@ -91,7 +91,7 @@ public extension ScaleTransformView {
         layer.shadowOpacity = max(scaleOptions.shadowOpacityMin, (1 - abs(Float(progress))) * scaleOptions.shadowOpacityMax)
     }
     
-    private func applyScaleAndTranslation(progress: CGFloat) {
+    private func applyScaleAndTranslation(progress: CGFloat, isFirstItem: Bool, isLastItem: Bool) {
         var transform = CGAffineTransform.identity
         var xAdjustment: CGFloat = 0
         var yAdjustment: CGFloat = 0
@@ -121,6 +121,11 @@ public extension ScaleTransformView {
         if let max = scaleOptions.maxTranslationRatio {
             translateX = min(translateX, scalableView.bounds.width * max.x)
             translateY = min(translateY, scalableView.bounds.height * max.y)
+        }
+        if isFirstItem {
+            translateX = translateX - 32
+        } else if isLastItem {
+            translateX = translateX + 32
         }
         transform = transform
             .translatedBy(x: translateX, y: translateY)

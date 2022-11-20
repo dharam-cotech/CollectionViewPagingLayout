@@ -152,9 +152,9 @@ extension PagingCollectionViewCell: TransformableView,
         parent?.modifierData?.snapshotOptions ?? .init()
     }
 
-    func transform(progress: CGFloat) {
+    func transform(progress: CGFloat, isFirstItem: Bool, isLastItem: Bool) {
         if parent?.modifierData?.scaleOptions != nil {
-            applyScaleTransform(progress: progress)
+            applyScaleTransform(progress: progress, isFirstItem: isFirstItem, isLastItem: isLastItem)
         }
         if parent?.modifierData?.stackOptions != nil {
             applyStackTransform(progress: progress)
