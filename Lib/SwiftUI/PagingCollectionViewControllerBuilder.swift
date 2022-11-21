@@ -21,6 +21,7 @@ public class PagingCollectionViewControllerBuilder<ValueType: Identifiable, Page
     var modifierData: PagingCollectionViewModifierData = .init()
 
     weak var viewController: ViewController?
+    var onCurrentPageChanged: ((Int) -> Void)?
 
 
     // MARK: Lifecycle
@@ -28,21 +29,25 @@ public class PagingCollectionViewControllerBuilder<ValueType: Identifiable, Page
     public init(
         data: [ValueType],
         pageViewBuilder: @escaping (ValueType, CGFloat) -> PageContent,
-        selection: Binding<ValueType.ID?>?
+        selection: Binding<ValueType.ID?>?,
+        onCurrentPageChanged: ((Int) -> Void)? = nil
     ) {
         self.data = data
         self.pageViewBuilder = pageViewBuilder
         self.selection = selection
+        self.onCurrentPageChanged = onCurrentPageChanged
     }
 
     public init(
         data: [ValueType],
         pageViewBuilder: @escaping (ValueType) -> PageContent,
-        selection: Binding<ValueType.ID?>?
+        selection: Binding<ValueType.ID?>?,
+        onCurrentPageChanged: ((Int) -> Void)? = nil
     ) {
         self.data = data
         self.pageViewBuilder = { value, _ in pageViewBuilder(value) }
         self.selection = selection
+        self.onCurrentPageChanged = onCurrentPageChanged
     }
 
 
@@ -73,6 +78,7 @@ public class PagingCollectionViewControllerBuilder<ValueType: Identifiable, Page
         viewController.onCurrentPageChanged = { [data, selection] in
             guard $0 >= 0 && $0 < data.count else { return }
             selection?.wrappedValue = data[$0].id
+            self.onCurrentPageChanged?($0)
         }
     }
 }

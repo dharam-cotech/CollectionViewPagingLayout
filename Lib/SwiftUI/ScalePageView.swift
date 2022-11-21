@@ -21,9 +21,10 @@ public struct ScalePageView<ValueType: Identifiable, PageContent: View>: UIViewC
     public init(
         _ data: [ValueType],
         selection: Binding<ValueType.ID?>? = nil,
-        @ViewBuilder viewBuilder: @escaping (ValueType) -> PageContent
+        @ViewBuilder viewBuilder: @escaping (ValueType) -> PageContent,
+        onCurrentPageChanged: ((Int) -> Void)?
     ) {
-        builder = .init(data: data, pageViewBuilder: viewBuilder, selection: selection)
+        builder = .init(data: data, pageViewBuilder: viewBuilder, selection: selection, onCurrentPageChanged: onCurrentPageChanged)
         builder.modifierData.scaleOptions = .init()
     }
 }
