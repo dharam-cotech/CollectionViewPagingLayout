@@ -53,15 +53,15 @@ public extension TransformableView where Self: UICollectionViewCell {
 }
 
 
-public extension UICollectionViewCell {
-    /// This method transfers the event to `selectableView`
-    /// this is necessary since cells are on top of each other and they fill the whole collectionView frame
-    /// Without this, only the first visible cell is selectable
-    // swiftlint:disable:next override_in_extension
-    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        if let view = (self as? TransformableView)?.selectableView {
-            return view.hitTest(convert(point, to: view), with: event)
-        }
-        return super.hitTest(point, with: event)
-    }
-}
+//public extension UICollectionViewCell {
+//    /// This method transfers the event to `selectableView`
+//    /// this is necessary since cells are on top of each other and they fill the whole collectionView frame
+//    /// Without this, only the first visible cell is selectable
+//    // swiftlint:disable:next override_in_extension
+//    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+//        if let view = (self as? TransformableView)?.selectableView {
+//            return view.hitTest(convert(point, to: view), with: event)
+//        }
+//        return super.hitTest(point, with: event)
+//    }
+//}
