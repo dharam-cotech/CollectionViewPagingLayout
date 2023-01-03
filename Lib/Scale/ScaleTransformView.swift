@@ -123,9 +123,9 @@ public extension ScaleTransformView {
             translateY = min(translateY, scalableView.bounds.height * max.y)
         }
         if isFirstItem {
-            translateX = translateX - 20
+            translateX = translateX - 18
         } else if isLastItem {
-            translateX = translateX + 20
+            translateX = translateX + 18
         }
         transform = transform
             .translatedBy(x: translateX, y: translateY)
