@@ -102,9 +102,9 @@ public class PagingCollectionViewController<ValueType: Identifiable, PageContent
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         modifierData?.onTapPage?(indexPath.row)
 
-        if modifierData?.goToSelectedPage ?? true {
-            (collectionView.collectionViewLayout as? CollectionViewPagingLayout)?.setCurrentPage(indexPath.row)
-        }
+//        if modifierData?.goToSelectedPage ?? true {
+//            (collectionView.collectionViewLayout as? CollectionViewPagingLayout)?.setCurrentPage(indexPath.row)
+//        }
     }
 
 

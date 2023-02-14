@@ -26,7 +26,7 @@ public struct ScalePageView<ValueType: Identifiable, PageContent: View>: UIViewC
         onTapPage: ((Int) -> Void)?
     ) {
         builder = .init(data: data, pageViewBuilder: viewBuilder, selection: selection, onCurrentPageChanged: onCurrentPageChanged)
-        builder.modifierData.goToSelectedPage = false
+        builder.modifierData.goToSelectedPage = true
         builder.modifierData.scaleOptions = .init()
         builder.modifierData.onTapPage = onTapPage
     }
